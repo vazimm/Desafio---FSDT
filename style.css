@@ -52,9 +52,11 @@ body {
 
 /* Form Card Styles */
 .form-card {
+    --card-padding: 40px;
     background-color: white;
     border-radius: 8px;
-    padding: 40px;
+    padding: var(--card-padding) var(--card-padding) 0;
+    overflow: hidden;
     width: 100%;
     max-width: 600px;
     margin-top: -120px;
@@ -107,6 +109,13 @@ body {
     min-height: 100px;
 }
 
+.form-actions {
+    margin: 34px calc(var(--card-padding) * -1) 0;
+    padding: 20px var(--card-padding);
+    background-color: #f4f4f6;
+    border-top: 1px solid #e5e5e8;
+}
+
 /* Button Styles */
 .btn-submit {
     width: 100%;
@@ -119,7 +128,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
-    margin-top: 15px;
+    margin-top: 0;
 }
 
 .btn-submit:hover {
@@ -165,7 +174,8 @@ body {
     }
 
     .form-card {
-        padding: 25px;
+        --card-padding: 25px;
+        padding: var(--card-padding) var(--card-padding) 0;
         margin-top: -75px;
     }
 

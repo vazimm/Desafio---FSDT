@@ -24,18 +24,32 @@ form.addEventListener('submit', function (event) {
 
     // Objeto com os dados do grupo
     const groupData = {
-        membros: nomes,
-        historico: historico,
-        dataSubmissao: new Date().toLocaleString('pt-BR')
+        names: nomes,
+        message: historico
     };
 
-    // Log dos dados (para debug)
-    console.log('Dados do grupo:', groupData);
+    // Requisição POST para a API
+    fetch('https://fsdt-contact.onrender.com/contact', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(groupData)
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            alert('✓ Formulário enviado com sucesso!');
+            showSuccessMessage();
+        })
+        .catch((error) => {
+            alert('✗ Erro ao enviar formulário. Tente novamente.');
+        });
 
-    // Exibe mensagem de sucesso
-    showSuccessMessage();
-
-    // Opcional: Limpa o formulário após envio
     form.reset();
 });
 

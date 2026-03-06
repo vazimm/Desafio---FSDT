@@ -36,7 +36,7 @@ form.addEventListener('submit', function (event) {
     showSuccessMessage();
 
     // Opcional: Limpa o formulário após envio
-    // form.reset();
+    form.reset();
 });
 
 // Função para exibir mensagem de sucesso
